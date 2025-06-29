@@ -14,9 +14,9 @@ func ConvertToASCII(
 	input string,
 	characterWidth int,
 	characterHeight int,
-	cores int,
+	threads int,
 ) (string, error) {
-	ch := make(chan int, cores)
+	ch := make(chan int, threads)
 	mu := sync.Mutex{}
 	wg := sync.WaitGroup{}
 
