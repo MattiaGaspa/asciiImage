@@ -16,6 +16,10 @@ func ConvertToASCII(
 	characterHeight int,
 	threads int,
 ) (string, error) {
+	if err := validate(input, characterWidth, characterHeight, threads); err != nil {
+		return "", err
+	}
+
 	ch := make(chan int, threads)
 	mu := sync.Mutex{}
 	wg := sync.WaitGroup{}
